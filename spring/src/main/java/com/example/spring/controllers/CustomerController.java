@@ -1,6 +1,7 @@
 package com.example.spring.controllers;
 
 import com.example.spring.entities.Customer;
+import com.example.spring.services.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,28 +12,7 @@ import java.util.Map;
 @RestController
 public class CustomerController {
 
-  private List<Customer> list = new ArrayList<>(); //Lista para cargar datos por defecto del constructor
-
-  //Vamos a generar un constructor que se ejecute por defecto con datos de ejemplo
-  public CustomerController(){
-    Customer customer = new Customer();
-    customer.setId(1);
-    customer.setFirstName("Jacky");
-    customer.setLastName("Mora-Azan");
-    customer.setEmail("jacky@example.com");
-    customer.setAddress("Av. Siempre Viva 123");
-
-    list.add(customer); //Se envia a la variable declarada arriba
-
-    Customer customer2 = new Customer();
-    customer2.setId(2);
-    customer2.setFirstName("PaKo");
-    customer2.setLastName("Araya");
-    customer2.setEmail("pako@example.com");
-    customer2.setAddress("Av. Siempre Viva 123");
-
-    list.add(customer2); //Se envia a la variable declarada arriba
-  }
+  private CustomerService customerService; //Lista para cargar datos por defecto del constructor
 
   @GetMapping("/prueba")
   public String prueba(){
@@ -87,56 +67,33 @@ public class CustomerController {
 
   @GetMapping("/customer/{id}") //Traer un cliente en especifico
   public Customer getCustomer(@PathVariable Integer id){
-    for(Customer customer : list){
-      if(customer.getId() == id){
-        return customer;
-      }
-    }
-    return null;
+    return customerService.getCustomer(id);
   }
 
   @GetMapping("/customer") //Traer todos los clientes
   public List<Customer> getAllCustomer() {
-    return list;
+    return customerService.getAllCustomer();
   }
 
   @PostMapping("/addcustomer") //Agregar cliente
   public void addCustomer(@RequestBody Customer customer) {
-    list.add(customer);
+    customerService.addCustomer(customer);
   }
 
   @DeleteMapping ("/customer/{id}") //Eliminar cliente
   public void removeCustomer(@PathVariable Integer id) {
-    for(Customer customer : list){
-      if(customer.getId() == id){
-        list.remove(customer);
-        break;
-      }
-    }
+    customerService.removeCustomer(id);
   }
 
   @PutMapping("/updatecustomer/{id}") //Actualizar cliente
   public void updateCustomer(@PathVariable Integer id,@RequestBody Customer updateCustomer) {
-    for(Customer customer : list){
-      if(customer.getId() == id){
-        list.remove(customer);
-        updateCustomer.setId(id);
-        list.add(updateCustomer);
-        break;
-      }
-    }
+    customerService.updateCustomer(id,updateCustomer);
   }
 
   //Busqueda por parametros
   @GetMapping("/customer/search") //Traer un cliente en especifico
-  public List<Customer> getCustomer(@RequestParam String email){
-    List<Customer> searchCustomer = new ArrayList<>();
-    for(Customer customer : list){
-      if(customer.getEmail().contains(email)){
-        searchCustomer.add(customer);
-      }
-    }
-    return searchCustomer;
+  public List<Customer> searchCustomer(@RequestParam String email){
+    return customerService.searchCustomer(email);
   }
 
 }
