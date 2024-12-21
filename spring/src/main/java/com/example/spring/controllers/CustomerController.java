@@ -1,7 +1,8 @@
 package com.example.spring.controllers;
 
 import com.example.spring.entities.Customer;
-import com.example.spring.services.CustomerService;
+import com.example.spring.interfaces.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ import java.util.Map;
 @RestController
 public class CustomerController {
 
-  private CustomerService customerService; //Lista para cargar datos por defecto del constructor
+  @Autowired
+  private CustomerService customerService;
 
   @GetMapping("/prueba")
   public String prueba(){

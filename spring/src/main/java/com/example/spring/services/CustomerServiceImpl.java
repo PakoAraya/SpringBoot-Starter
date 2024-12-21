@@ -1,8 +1,8 @@
 package com.example.spring.services;
 
 import com.example.spring.entities.Customer;
+import com.example.spring.interfaces.CustomerService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
   private List<Customer> list = new ArrayList<>(); //Lista para cargar datos por defecto del constructor
 
   //Vamos a generar un constructor que se ejecute por defecto con datos de ejemplo
-  public CustomerService(){
+  public CustomerServiceImpl(){
     Customer customer = new Customer();
     customer.setId(1);
     customer.setFirstName("Jacky");
