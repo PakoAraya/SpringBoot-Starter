@@ -1,9 +1,7 @@
 package com.example.spring.controllers;
 
 import com.example.spring.entities.Customer;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,25 +100,43 @@ public class CustomerController {
     return list;
   }
 
-  @GetMapping("/addcustomer") //Agregar cliente
-  public void addCustomer(Customer customer) {
-
+  @PostMapping("/addcustomer") //Agregar cliente
+  public void addCustomer(@RequestBody Customer customer) {
+    list.add(customer);
   }
 
-  @GetMapping("/deletecustomer") //Eliminar cliente
-  public void removeCustomer() {
-
+  @DeleteMapping ("/customer/{id}") //Eliminar cliente
+  public void removeCustomer(@PathVariable Integer id) {
+    for(Customer customer : list){
+      if(customer.getId() == id){
+        list.remove(customer);
+        break;
+      }
+    }
   }
 
-  @GetMapping("/updatecustomer") //Actualizar cliente
-  public void updateCustomer() {
-
+  @PutMapping("/updatecustomer/{id}") //Actualizar cliente
+  public void updateCustomer(@PathVariable Integer id,@RequestBody Customer updateCustomer) {
+    for(Customer customer : list){
+      if(customer.getId() == id){
+        list.remove(customer);
+        updateCustomer.setId(id);
+        list.add(updateCustomer);
+        break;
+      }
+    }
   }
 
-  @GetMapping("/searchcustomer") //Buscar cliente
-  public List<Customer> searchCustomer() {
-    return null;
+  //Busqueda por parametros
+  @GetMapping("/customer/search") //Traer un cliente en especifico
+  public List<Customer> getCustomer(@RequestParam String email){
+    List<Customer> searchCustomer = new ArrayList<>();
+    for(Customer customer : list){
+      if(customer.getEmail().contains(email)){
+        searchCustomer.add(customer);
+      }
+    }
+    return searchCustomer;
   }
-
 
 }
