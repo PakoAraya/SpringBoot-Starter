@@ -13,7 +13,7 @@ public class PersonaController {
   @Autowired
   private PersonaRepository personaRepository;
 
-  @GetMapping("/")
+  @GetMapping("/persona-mensaje")
   public String index() {
     return "CONECTADOS";
   }
