@@ -24,10 +24,11 @@ public class UserRepositoryTest {
   @Test
   public void testAddNew(){
     User user = new User();
-    user.setEmail("lewis.hamilton@ferrari.com");
+    user.setEmail("ayrton.senna@mclaren.com");
     user.setPassword("123456");
-    user.setFirstName("Lewis");
-    user.setLastName("Hamilton");
+    user.setFirstName("Ayrton");
+    user.setLastName("Senna");
+    user.setEnabled(false);
 
     //Save the user on database
     User savedUser = userRepositoryJPA.save(user);

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepositoryJPA extends CrudRepository<User, Integer> {
-  
+
 }
