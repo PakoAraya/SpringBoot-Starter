@@ -8,6 +8,7 @@ public class UserController {
 
   @GetMapping("/")
   public String showHomePage() {
+    System.out.println("Hello World in User Controller");
     return "index";
   }
 }
