@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -21,5 +22,14 @@ public class UserService {
   public String save(User user) {
     userRepositoryJPA.save(user);
     return "redirect:/users";
+  }
+
+  public User get(Integer id) {
+    Optional<User> result = userRepositoryJPA.findById(id);
+    if(result.isPresent()) {
+      return result.get();
+    } else {
+      throw new RuntimeException("Could not found any user with id: " + id);
+    }
   }
 }
