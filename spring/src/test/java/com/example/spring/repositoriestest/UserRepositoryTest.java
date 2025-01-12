@@ -1,7 +1,7 @@
 package com.example.spring.repositoriestest;
 
 import com.example.spring.models.User;
-import com.example.spring.repository.UserRepositoryJPA;
+import com.example.spring.repositories.UserRepositoryJPA;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

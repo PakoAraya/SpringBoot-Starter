@@ -1,7 +1,7 @@
 package com.example.spring.controllers;
 
 import com.example.spring.models.Persona;
-import com.example.spring.repository.PersonaRepository;
+import com.example.spring.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

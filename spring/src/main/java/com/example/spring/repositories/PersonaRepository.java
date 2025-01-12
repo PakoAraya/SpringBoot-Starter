@@ -1,4 +1,4 @@
-package com.example.spring.repository;
+package com.example.spring.repositories;
 
 import com.example.spring.models.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;

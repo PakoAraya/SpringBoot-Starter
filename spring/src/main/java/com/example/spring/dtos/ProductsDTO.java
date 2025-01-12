@@ -1,37 +1,22 @@
-package com.example.spring.models;
+package com.example.spring.dtos;
 
-import jakarta.persistence.*;
-
+import com.example.spring.models.Product;
 import java.util.Date;
 
-@Entity
-@Table(name = "products")
-public class Product {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductsDTO {
   private long id;
-
-  @Column(name = "name", nullable = false)
   private String name;
-  @Column(name = "brand", nullable = false)
   private String brand;
-  @Column(name = "category", nullable = false)
   private String category;
-  @Column(name = "price", nullable = false)
   private double price;
-  @Column(name = "description", columnDefinition = "TEXT")
   private String description;
-  @Column(name = "created_at", nullable = false)
   private Date created_at;
-  @Column(name = "image_path", nullable = false)
   private String imageFileName;
 
-  //Empty constructor of the class
-  public Product() {
+  public ProductsDTO() {
   }
 
-  //Constructor of the class
-  public Product(long id, String name, String brand, String category, double price, String description, Date created_at, String imageFileName) {
+  public ProductsDTO(long id, String name, String brand, String category, double price, String description, Date created_at, String imageFileName) {
     this.id = id;
     this.name = name;
     this.brand = brand;
@@ -42,7 +27,17 @@ public class Product {
     this.imageFileName = imageFileName;
   }
 
-  //Getters and Setters
+  public ProductsDTO(Product product){
+    this.id = product.getId();
+    this.name = product.getName();
+    this.brand = product.getBrand();
+    this.category = product.getCategory();
+    this.price = product.getPrice();
+    this.description = product.getDescription();
+    this.created_at = product.getCreated_at();
+    this.imageFileName = product.getImageFileName();
+  }
+
   public long getId() {
     return id;
   }
