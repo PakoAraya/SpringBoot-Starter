@@ -36,3 +36,6 @@ build/
 # Ignorar application.properties
 **/src/main/resources/application.properties
 
+# Ignorar las imagenes que se carguen del proyecto
+**/images
+
