@@ -24,14 +24,14 @@ public class Product {
   @Column(name = "created_at", nullable = false)
   private Date created_at;
   @Column(name = "image_path", nullable = false)
-  private String imageFileName;
+  private String imagePath;
 
   //Empty constructor of the class
   public Product() {
   }
 
   //Constructor of the class
-  public Product(long id, String name, String brand, String category, double price, String description, Date created_at, String imageFileName) {
+  public Product(long id, String name, String brand, String category, double price, String description, Date created_at, String imagePath) {
     this.id = id;
     this.name = name;
     this.brand = brand;
@@ -39,7 +39,7 @@ public class Product {
     this.price = price;
     this.description = description;
     this.created_at = created_at;
-    this.imageFileName = imageFileName;
+    this.imagePath = imagePath;
   }
 
   //Getters and Setters
@@ -99,11 +99,11 @@ public class Product {
     this.created_at = created_at;
   }
 
-  public String getImageFileName() {
-    return imageFileName;
+  public String getImagePath() {
+    return imagePath;
   }
 
-  public void setImageFileName(String imageFileName) {
-    this.imageFileName = imageFileName;
+  public void setImagePath(String imageFileName) {
+    this.imagePath = imageFileName;
   }
 }

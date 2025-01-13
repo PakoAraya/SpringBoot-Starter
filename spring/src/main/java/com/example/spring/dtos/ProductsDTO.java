@@ -11,12 +11,12 @@ public class ProductsDTO {
   private double price;
   private String description;
   private Date created_at;
-  private String imageFileName;
+  private String imagePath;
 
   public ProductsDTO() {
   }
 
-  public ProductsDTO(long id, String name, String brand, String category, double price, String description, Date created_at, String imageFileName) {
+  public ProductsDTO(long id, String name, String brand, String category, double price, String description, Date created_at, String imagePath) {
     this.id = id;
     this.name = name;
     this.brand = brand;
@@ -24,7 +24,7 @@ public class ProductsDTO {
     this.price = price;
     this.description = description;
     this.created_at = created_at;
-    this.imageFileName = imageFileName;
+    this.imagePath = imagePath;
   }
 
   public ProductsDTO(Product product){
@@ -35,7 +35,7 @@ public class ProductsDTO {
     this.price = product.getPrice();
     this.description = product.getDescription();
     this.created_at = product.getCreated_at();
-    this.imageFileName = product.getImageFileName();
+    this.imagePath = product.getImagePath();
   }
 
   public long getId() {
@@ -94,11 +94,11 @@ public class ProductsDTO {
     this.created_at = created_at;
   }
 
-  public String getImageFileName() {
-    return imageFileName;
+  public String getImagePath() {
+    return imagePath;
   }
 
-  public void setImageFileName(String imageFileName) {
-    this.imageFileName = imageFileName;
+  public void setImagePath(String imagePath) {
+    this.imagePath = imagePath;
   }
 }
