@@ -1,15 +1,26 @@
 package com.example.spring.dtos;
 
 import com.example.spring.models.Product;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class ProductsDTO {
   private long id;
+  @NotEmpty(message = "The name is required")
   private String name;
+  @NotEmpty(message = "The brand is required")
   private String brand;
+  @NotEmpty(message = "The category is required")
   private String category;
+  @Min(0)
   private double price;
+  @Size(min = 10, message = "The description must have at least 10 characters")
+  @Size(max = 2000, message = "The description must have less than 2000 characters")
   private String description;
+
   private Date created_at;
   private String imagePath;
 
