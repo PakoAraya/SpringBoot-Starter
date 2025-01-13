@@ -1,5 +1,6 @@
 package com.example.spring.controllers;
 
+import com.example.spring.dtos.ProductsDTO;
 import com.example.spring.models.Product;
 import com.example.spring.repositories.ProductsRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
